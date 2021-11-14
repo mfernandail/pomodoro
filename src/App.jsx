@@ -7,12 +7,17 @@ import './App.css';
 function App() {
   const [workMinutes, setWorkMinutes] = useState(1);
   const [breakMinutes, setBreakMinutes] = useState(1);
+  const [counterStart, setCounterStart] = useState(true);
 
   return (
     <main>
-      <Context.Provider value={{workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes}} >
-        <Timer />
+      <Context.Provider value={{
+          workMinutes, setWorkMinutes, 
+          breakMinutes, setBreakMinutes,
+          counterStart, setCounterStart
+      }} >
         <Settings />
+        <Timer />
       </Context.Provider>
     </main>
   )

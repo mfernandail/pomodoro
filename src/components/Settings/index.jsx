@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { Context } from '../../context/SettingsContext';
 import ReactSlider from 'react-slider';
-// import Slider from '../Slider';
 import './settings.css';
 
 export default function Settings() {
@@ -12,6 +11,10 @@ export default function Settings() {
 
   const handleClick = () => {
     setEnableBtn(!enableBtn);
+    contextInfo.setCounterStart(!contextInfo.counterStart);
+
+    // contextInfo.setBreakMinutes(1);
+    // contextInfo.setWorkMinutes(1);
   }
 
   return (
@@ -40,16 +43,12 @@ export default function Settings() {
           max = {180}
         />
 
-        {/* <Slider 
-          enable={enableBtn}           
-        /> */}
-
         <button
           onClick={handleClick}
           className="settings_slider--btn"
         >
           {
-            enableBtn ? 'Start' : 'Modify'
+            enableBtn ? 'Ok' : 'Modify'
           }
         </button>
       </div>
