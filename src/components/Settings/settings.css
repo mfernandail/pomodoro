@@ -15,7 +15,7 @@
   border-radius: 20px;
 }
 
-.thumb{
+.settings_slider--thumb{
   background-color: var(--workSlider);
   cursor: pointer;
   width: 30px;
@@ -23,11 +23,41 @@
   border-radius: 20px;
 }
 
+.thumb-disabled{
+  background-color: var(--workSliderDisabled);
+}
+
+.disabled {  
+  border: 2px solid var(--workSliderDisabled);
+}
+
 .break {
   border: 2px solid var(--breakSlider);
-
 }
 
 .thumb-break{
   background-color: var(--breakSlider);
+}
+
+.break-disabled {
+  border: 2px solid var(--breakSliderDisabled);
+}
+
+.thumb-break-disabled {
+  background-color: var(--breakSliderDisabled);
+}
+
+.settings_slider--btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  border: 2px solid #fff;
+  padding: 5px;
+  border-radius: 5px;  
+}
+
+.settings_slider--btn:hover {
+  border: 2px solid #000; 
+  color: #000;
+  
 }

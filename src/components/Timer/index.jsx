@@ -1,14 +1,27 @@
+import { useContext, useState } from 'react';
+import { Context } from '../../context/SettingsContext';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+// import PauseAndPlayButton from '../PausePlaybutton';
+
+import play from '../../images/icons/play.svg';
+import pause from '../../images/icons/pause.svg';
+
 import 'react-circular-progressbar/dist/styles.css';
-import PauseAndPlayButton from '../PausePlaybutton';
 import './timer.css';
 
 export default function Timer() {
+  const [paused, setPaused] = useState(false)
+  
+  const contextInfo = useContext(Context);
+
+  const handlePausedClick = () => {
+    setPaused(!paused)
+  }
+
 
   return (
     <div className="timmer">
-      <CircularProgressbar 
-
+      <CircularProgressbar s
         value={60} 
         text={`${60}%`} 
         styles={buildStyles({
@@ -20,7 +33,16 @@ export default function Timer() {
       />
 
       <div>
-        <PauseAndPlayButton />
+        {/* <PauseAndPlayButton /> */}
+
+        <button className="timmer_buttons">
+          <img 
+            src={paused ? play : pause} 
+            alt={paused ? 'Play button' : 'Pause button'} 
+            onClick={handlePausedClick}
+          />
+        </button>
+
       </div>
     </div>
   )

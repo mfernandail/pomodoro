@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="11px"
-   height="14px"
-   viewBox="0 0 11 14"
+   width="20px"
+   height="20px"
+   viewBox="0 0 20 20"
    version="1.1"
    id="svg14"
    sodipodi:docname="play.svg"
@@ -10,7 +10,10 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs18" />
   <sodipodi:namedview
@@ -22,9 +25,9 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="56.857143"
-     inkscape:cx="3.5439698"
-     inkscape:cy="7.4748744"
+     inkscape:zoom="39.8"
+     inkscape:cx="9.9874372"
+     inkscape:cy="10"
      inkscape:window-width="1920"
      inkscape:window-height="1000"
      inkscape:window-x="-11"
@@ -33,11 +36,46 @@
      inkscape:current-layer="svg14" />
   <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
   <title
-     id="title2">play_arrow</title>
+     id="title2">play_circle_filled</title>
   <desc
      id="desc4">Created with Sketch.</desc>
-  <path
-     style="fill:none;stroke:#edf5f4;stroke-width:1.712;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke fill markers"
-     d="m 1.4746627,2.4400277 0,8.8516113 8.1026997,-4.574027 z"
-     id="path1133" />
+  <g
+     id="Icons"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Outlined"
+       transform="translate(-204.000000, -952.000000)">
+      <g
+         id="Av"
+         transform="translate(100.000000, 852.000000)">
+        <g
+           id="Outlined-/-AV-/-play_circle_filled"
+           transform="translate(102.000000, 98.000000)">
+          <g
+             id="g8">
+            <polygon
+               id="Path"
+               points="0 0 24 0 24 24 0 24" />
+            <path
+               d="M12,2 C6.48,2 2,6.48 2,12 C2,17.52 6.48,22 12,22 C17.52,22 22,17.52 22,12 C22,6.48 17.52,2 12,2 Z M10,16.5 L10,7.5 L16,12 L10,16.5 Z"
+               id="🔹-Icon-Color"
+               fill="#1D1D1D"
+               style="fill:#ffffff;fill-opacity:1" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <metadata
+     id="metadata835">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>play_circle_filled</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
 </svg>

@@ -1,6 +1,8 @@
 :root{
   --workSlider: #f54e4e;
   --breakSlider: #4aec8c;
+  --workSliderDisabled: #f54e4e65;
+  --breakSliderDisabled: #4aec8b6b;
 }
 
 body{
@@ -29,6 +31,5 @@ button{
 label{
   display:block;
   margin-bottom: 10px;
-  margin-top: 20px;
-  text-transform: capitalize;
+  margin-top: 10px;
 }

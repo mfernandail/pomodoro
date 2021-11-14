@@ -5,13 +5,12 @@ import Settings from './components/Settings';
 import './App.css';
 
 function App() {
-  const [showSettings, setShowSettings] = useState(false);
-  const [workMinutes, setWorkMinutes] = useState(45);
-  const [breakMinutes, setBreakMinutes] = useState(15);
+  const [workMinutes, setWorkMinutes] = useState(1);
+  const [breakMinutes, setBreakMinutes] = useState(1);
 
   return (
     <main>
-      <Context.Provider value={{}} >
+      <Context.Provider value={{workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes}} >
         <Timer />
         <Settings />
       </Context.Provider>
