@@ -1,42 +1,30 @@
 :root{
-  --red: #f54e4e;
-  --green: #4aec8c;
+  --workSlider: #f54e4e;
+  --breakSlider: #4aec8c;
 }
 
 body{
-  background-color: #30384b;
+  background-color: #532249;
   color: #eee;
 }
 
 main{
-  padding-top: 50px;
-  max-width: 340px;
-  margin: 0 auto;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;  
+  height: 100vh;
+  justify-content: space-around;
 }
 
 button{
   background-color: transparent;
-  color: rgba(255,255,255,0.8);
   border:0;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
   display: inline-block;
   width: 100px;
-  cursor: pointer;
 }
 
-button.with-text{
-  width: auto;
-  background-color:rgba(255,255,255,0.1);
-  border-radius:10px;
-  padding: 10px 20px;
-  font-size: 1.4rem;
-  line-height: 36px;
-}
-button.with-text svg{
-  width: 36px;
-  float:left;
-  margin-right: 5px;
-}
 
 label{
   display:block;

@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Context } from './context/SettingsContext';
+import Timer from './components/Timer';
+import Settings from './components/Settings';
 import './App.css';
 
 function App() {
@@ -10,7 +12,8 @@ function App() {
   return (
     <main>
       <Context.Provider value={{}} >
-        <h1>Pomodoro</h1>
+        <Timer />
+        <Settings />
       </Context.Provider>
     </main>
   )

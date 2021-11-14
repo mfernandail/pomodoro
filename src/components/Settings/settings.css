@@ -1,0 +1,33 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settings_slider {
+  max-width: 340px;
+  min-width: 250px;
+}
+
+.settings_slider--slider {
+  height: 30px;
+  border: 2px solid var(--workSlider);
+  border-radius: 20px;
+}
+
+.thumb{
+  background-color: var(--workSlider);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.break {
+  border: 2px solid var(--breakSlider);
+
+}
+
+.thumb-break{
+  background-color: var(--breakSlider);
+}
