@@ -7,6 +7,9 @@ import Settings from '../Settings';
 import 'react-circular-progressbar/dist/styles.css';
 import './timer.css';
 
+
+import alertBell from '../../sound/bell.mp3';
+
 export default function Timer() {
   const contextInfo = useContext(Context);
 
@@ -18,6 +21,11 @@ export default function Timer() {
   const secondsLeftRef = useRef(secondsLeft);
   const isPausedRef = useRef(paused);
   const modeRef = useRef(mode);
+
+
+  const audioRef = useRef();
+
+
   
   const handlePausedClick = () => { 
     if(!contextInfo.counterStart){
@@ -33,6 +41,9 @@ export default function Timer() {
 
   useEffect(() => {
     const switchMode = () => {
+      const audio = audioRef.current;
+      audio.play();
+
       const nextMode = modeRef.current === 'work' ? 'break' : 'work';
       const nextSeconds = (nextMode === 'work' ? contextInfo.workMinutes : contextInfo.breakMinutes) * 60;
       setMode(nextMode);
@@ -56,7 +67,7 @@ export default function Timer() {
       }
       tick();
       
-    }, 100);
+    }, 1000);
 
     return () => clearInterval(timerInterval);
 
@@ -79,6 +90,8 @@ export default function Timer() {
       <h1 className="container-title">Pomodoro</h1>
 
       <Settings paused={paused} />
+
+      <audio ref={audioRef} src={alertBell}></audio>
 
       <div className="timer">
         <CircularProgressbar
