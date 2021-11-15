@@ -83,22 +83,12 @@ export default function Timer() {
   return (
     <div className="container">
       <h1 className="container-title">Pomodoro</h1>
-
+      
       <Settings paused={paused} />
 
       <audio ref={audioRef} src={alertBell}></audio>
 
       <div className="timer">
-        <CircularProgressbar
-          value={percentage}
-          text={minutes + ':' + seconds}
-          styles={buildStyles({
-            textColor:'#fff',
-            pathColor: colorChange,
-            tailColor:'rgba(255,255,255,.2)',
-          })} 
-        />
-
         <div>
           <button className="timmer_buttons">
             <img 
@@ -109,6 +99,17 @@ export default function Timer() {
             />
           </button>
         </div>
+
+        <CircularProgressbar
+          value={percentage}
+          text={minutes + ':' + seconds}
+          styles={buildStyles({
+            textColor:'#fff',
+            pathColor: colorChange,
+            tailColor:'rgba(255,255,255,.2)',
+          })} 
+        />
+
       </div>
 
     </div>

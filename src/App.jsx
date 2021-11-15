@@ -4,8 +4,8 @@ import Timer from './components/Timer';
 import './App.css';
 
 function App() {
-  const [workMinutes, setWorkMinutes] = useState(1);
-  const [breakMinutes, setBreakMinutes] = useState(1);
+  const [workMinutes, setWorkMinutes] = useState(10);
+  const [breakMinutes, setBreakMinutes] = useState(2);
   const [counterStart, setCounterStart] = useState(true);
 
   return (

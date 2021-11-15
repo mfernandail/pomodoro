@@ -20,7 +20,7 @@
 
 .timmer_buttons img {  
   width: 40px;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .timmer_buttons--paused {
@@ -32,10 +32,7 @@
 
 
 @media (max-width: 549px) {
-  .timer {
-    margin-top: 30px;
-  }  
   .timmer_buttons img {  
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 }

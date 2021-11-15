@@ -9,9 +9,6 @@ export default function Slider({enable}) {
         className={'slider'}
         thumbClassName={'thumb'}
         trackClassName={'track'}
-        // value={45}
-        // value={settingsInfo.workMinutes}
-        // onChange={newValue => settingsInfo.setWorkMinutes(newValue)}
         min={1}
         max={120}
       />
