@@ -2,9 +2,9 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from '../../context/SettingsContext';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import Settings from '../Settings';
-import play from '../../images/icons/play.svg';
-import pause from '../../images/icons/pause.svg';
-import alertBell from '../../sound/bell.mp3';
+import play from '../../assets/images/icons/play.svg';
+import pause from '../../assets/images/icons/pause.svg';
+import alertBell from '../../assets/sound/bell.mp3';
 import 'react-circular-progressbar/dist/styles.css';
 import './timer.css';
 

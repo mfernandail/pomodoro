@@ -51,22 +51,23 @@
   display: block;
   margin: 0 auto;
   margin-top: 20px;
-  border: 2px solid #fff;
+  border: 2px solid #000;
+  color: #fff;
+  background-color: #000;
   padding: 5px;
   border-radius: 5px;  
 }
 
 .settings_slider--btn:hover {
-  border: 2px solid #75cad0; 
-  color: #75cad0;
-  
+  transform: scale(1.1);
 }
 
 .disabledBtn {
   background-color: rgb(49, 49, 49);
-  color: #fff;
-}
+  opacity: .5;
 
+  border-color: transparent;
+}
 
 @media (max-width: 549px) {
   settings_slider--btn{
