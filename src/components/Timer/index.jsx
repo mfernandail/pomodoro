@@ -1,14 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Context } from '../../context/SettingsContext';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import Settings from '../Settings';
 import play from '../../images/icons/play.svg';
 import pause from '../../images/icons/pause.svg';
-import Settings from '../Settings';
+import alertBell from '../../sound/bell.mp3';
 import 'react-circular-progressbar/dist/styles.css';
 import './timer.css';
-
-
-import alertBell from '../../sound/bell.mp3';
 
 export default function Timer() {
   const contextInfo = useContext(Context);
@@ -22,10 +20,7 @@ export default function Timer() {
   const isPausedRef = useRef(paused);
   const modeRef = useRef(mode);
 
-
   const audioRef = useRef();
-
-
   
   const handlePausedClick = () => { 
     if(!contextInfo.counterStart){

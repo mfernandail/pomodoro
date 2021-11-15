@@ -25,6 +25,7 @@ export default function Settings({paused}) {
           trackClassName = {'track'}
           value = {contextInfo.workMinutes}
           onChange = {newValue => contextInfo.setWorkMinutes(newValue)}
+          min = {1}
           max = {120}
         />
 
