@@ -10,14 +10,6 @@ body{
   color: #eee;
 }
 
-main{
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;  
-  height: 100vh;
-  justify-content: space-around;
-}
-
 button{
   background-color: transparent;
   border:0;
@@ -26,7 +18,6 @@ button{
   display: inline-block;
   width: 100px;
 }
-
 
 label{
   display:block;

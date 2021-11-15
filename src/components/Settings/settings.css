@@ -57,7 +57,19 @@
 }
 
 .settings_slider--btn:hover {
-  border: 2px solid #000; 
-  color: #000;
+  border: 2px solid #75cad0; 
+  color: #75cad0;
   
+}
+
+.disabledBtn {
+  background-color: rgb(49, 49, 49);
+  color: #fff;
+}
+
+
+@media (max-width: 549px) {
+  settings_slider--btn{
+    margin-bottom: 50px;
+  }
 }

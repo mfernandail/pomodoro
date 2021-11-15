@@ -4,17 +4,14 @@ import { Context } from '../../context/SettingsContext';
 import ReactSlider from 'react-slider';
 import './settings.css';
 
-export default function Settings() {
+export default function Settings({paused}) {
   const [enableBtn, setEnableBtn] = useState(true);
 
   const contextInfo = useContext(Context);
 
   const handleClick = () => {
     setEnableBtn(!enableBtn);
-    contextInfo.setCounterStart(!contextInfo.counterStart);
-
-    // contextInfo.setBreakMinutes(1);
-    // contextInfo.setWorkMinutes(1);
+    contextInfo.setCounterStart(!contextInfo.counterStart);   
   }
 
   return (
@@ -28,7 +25,7 @@ export default function Settings() {
           trackClassName = {'track'}
           value = {contextInfo.workMinutes}
           onChange = {newValue => contextInfo.setWorkMinutes(newValue)}
-          max = {180}
+          max = {120}
         />
 
         <label htmlFor="">Break {contextInfo.breakMinutes}:00</label>
@@ -40,12 +37,13 @@ export default function Settings() {
           value = {contextInfo.breakMinutes}
           onChange = {newValue => contextInfo.setBreakMinutes(newValue)}
           min = {1}
-          max = {180}
+          max = {120}
         />
 
         <button
           onClick={handleClick}
-          className="settings_slider--btn"
+          className={!paused ? 'settings_slider--btn disabledBtn' : 'settings_slider--btn'}
+          disabled={!paused}
         >
           {
             enableBtn ? 'Ok' : 'Modify'

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Context } from './context/SettingsContext';
 import Timer from './components/Timer';
-import Settings from './components/Settings';
 import './App.css';
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
           breakMinutes, setBreakMinutes,
           counterStart, setCounterStart
       }} >
-        <Settings />
         <Timer />
       </Context.Provider>
     </main>
