@@ -29,7 +29,7 @@ export default function Timer() {
     }
   }
 
-  const tick = () => {
+  const tickTock = () => {
     secondsLeftRef.current--; 
     setSecondsLeft(secondsLeftRef.current);
   }
@@ -46,7 +46,6 @@ export default function Timer() {
       setSecondsLeft(nextSeconds);
       secondsLeftRef.current = nextSeconds;
 
-      console.log(modeRef.current)
       modeRef.current === 'work' ? setColorChange('#f54e4e') : setColorChange('#4aec8c');
     }
 
@@ -60,7 +59,7 @@ export default function Timer() {
       if(secondsLeftRef.current === 0) {
         return switchMode();
       }
-      tick();
+      tickTock();
       
     }, 1000);
 
@@ -77,6 +76,8 @@ export default function Timer() {
 
   const minutes = Math.floor(secondsLeft / 60);
   let seconds = secondsLeft % 60;
+
+  console.log(secondsLeft, '   ', seconds)
 
   if(seconds < 10) seconds = '0'+seconds;
 

@@ -65,12 +65,17 @@
 .disabledBtn {
   background-color: rgb(49, 49, 49);
   opacity: .5;
-
-  border-color: transparent;
+  border-color: transparent;  
 }
 
 @media (max-width: 549px) {
   settings_slider--btn{
     margin-bottom: 50px;
+  }
+
+  .settings_slider--btn {
+    
+    margin-bottom: 20px;
+    
   }
 }
