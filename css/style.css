@@ -40,6 +40,10 @@ footer {
   text-align: center;
 }
 
+.header-logo {
+  width: 40px;
+}
+
 h1 {
   text-align: center;
   font-size: 2rem;
@@ -156,7 +160,7 @@ button:disabled {
   padding: 20px;
   border-radius: 8px;
   border: 1px solid #eee;
-  /* display: none; */
+  display: none;
 }
 
 .settings.show {
