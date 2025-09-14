@@ -69,6 +69,7 @@
         </div>
       </div>
 
+      <div class="error" id="error"></div>
       <!-- Settings -->
       <div class="settings" id="settings">
         <h3>Settings</h3>
@@ -76,15 +77,15 @@
         <div class="inputs">
           <div>
             <label for="work">Work (min)</label>
-            <input type="number" id="work" value="25" min="1" max="60" />
+            <input type="number" required id="work" value="25" min="1" max="60" />
           </div>
           <div>
             <label for="short">Short Break</label>
-            <input type="number" id="short" value="5" min="1" max="30" />
+            <input type="number" required id="short" value="5" min="1" max="30" />
           </div>
           <div>
             <label for="long">Long Break</label>
-            <input type="number" id="long" value="15" min="1" max="60" />
+            <input type="number" required id="long" value="15" min="1" max="60" />
           </div>
         </div>
 
