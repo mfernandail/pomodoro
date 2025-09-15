@@ -167,6 +167,18 @@ button:disabled {
   display: block;
 }
 
+.error {
+  background-color: #ff000062;
+  color: #800f0f;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
 .settings h3 {
   margin-bottom: 20px;
   font-weight: 400;
@@ -224,11 +236,4 @@ input:focus {
     width: 100%;
     margin: 5px 0;
   }
-}
-
-.error {
-  background-color: #ff000062;
-  color: #800f0f;
-  border-radius: 10px 10px 0 0;
-  padding: 10px;
 }
