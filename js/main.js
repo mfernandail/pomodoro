@@ -16,6 +16,7 @@ const $inputLong = document.getElementById('long')
 const $btnSettingClose = document.getElementById('close')
 const $btnSettingSave = document.getElementById('save')
 const $error = document.getElementById('error')
+const $errorMsg = document.getElementById('error_msg')
 
 $btnSettings.addEventListener('click', showSetting)
 $btnSettingClose.addEventListener('click', showSetting)
@@ -95,15 +96,24 @@ function renderDisplay(minutes, seconds) {
 }
 
 function saveSettings() {
-  if (!isNaN($inputWork)) {
-    $error.textContent = 'Debe ser un numero'
+  if (isNaN(Number($inputWork.value))) {
+    $error.classList.add('show')
+    $inputWork.focus()
+    $inputWork.value = ''
+    $errorMsg.textContent = 'Debe ser un numero'
     return
   }
-  if (Number($inputWork.value) > 60) {
-    $error.textContent = 'debe ser menor a 60 minutos'
+  if (Number($inputWork.value) > 60 || Number($inputWork.value) < 1) {
+    $error.classList.add('show')
+    $inputWork.focus()
+    $inputWork.value = ''
+    $errorMsg.textContent = 'debe ser menor a 60 minutos y mayor a 1 minuto'
     return
   }
-  $error.textContent = ''
+
+  $error.classList.remove('show')
+  $errorMsg.textContent = ''
+
   $settings.classList.remove('show')
 
   const minutes = Number($inputWork.value)
