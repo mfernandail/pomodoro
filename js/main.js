@@ -96,9 +96,12 @@ function renderDisplay(minutes, seconds) {
 }
 
 function saveSettings() {
-  if (isNaN(Number($inputWork.value))) {
+  if (
+    isNaN(Number($inputWork.value)) ||
+    isNaN(Number($inputShort.value)) ||
+    isNaN(Number($inputLong.value))
+  ) {
     $error.classList.add('show')
-    $inputWork.focus()
     $inputWork.value = ''
     $errorMsg.textContent = 'Debe ser un numero'
     return
@@ -110,14 +113,50 @@ function saveSettings() {
     $errorMsg.textContent = 'debe ser menor a 60 minutos y mayor a 1 minuto'
     return
   }
+  if (Number($inputLong.value) > 60 || Number($inputLong.value) < 1) {
+    $error.classList.add('show')
+    $inputLong.focus()
+    $inputLong.value = ''
+    $errorMsg.textContent = 'debe ser menor a 60 minutos y mayor a 1 minuto'
+    return
+  }
+  if (Number($inputShort.value) > 30 || Number($inputShort.value) < 1) {
+    $error.classList.add('show')
+    $inputShort.focus()
+    $inputShort.value = ''
+    $errorMsg.textContent = 'debe ser menor a 30 minutos y mayor a 1 minuto'
+    return
+  }
 
-  $error.classList.remove('show')
   $errorMsg.textContent = ''
 
+  $error.classList.remove('show')
   $settings.classList.remove('show')
 
   const minutes = Number($inputWork.value)
 
   console.log(minutes)
   renderDisplay(minutes, 0)
+}
+
+function validateInput(input, min, max, fieldName) {
+  const value = Number(input.value)
+
+  if (isNaN(value)) {
+    $error.classList.add('show')
+    input.focus()
+    input.value = ''
+    $errorMsg.textContent = `Have to be a number`
+    return
+  }
+
+  if (value < min || value > max) {
+    $error.classList.add('show')
+    input.focus()
+    input.value = ''
+    $errorMsg.textContent = `Have to be min ${min} and max ${max}`
+    return
+  }
+
+  return true
 }
