@@ -33,6 +33,7 @@ let currentMinutes = 25
 let currentSeconds = 0
 let intervalId = null
 let isRunning = false
+let sessionCounter = 0
 
 let currentLong = 15
 let currentShort = 5
@@ -58,6 +59,10 @@ function startTimer() {
 
   if (intervalId) return
 
+  startSession(currentMinutes)
+}
+
+function startSession(type, time) {
   intervalId = setInterval(() => {
     if (currentSeconds > 0) {
       currentSeconds--
@@ -109,7 +114,6 @@ function renderDisplay(minutes, seconds) {
 
 function saveSettings() {
   const validateWork = validateInput($inputWork, 1, 60, 'Work')
-
   const validateShort = validateInput($inputShort, 1, 60, 'Short')
   const validateLong = validateInput($inputLong, 1, 60, 'Long')
 
