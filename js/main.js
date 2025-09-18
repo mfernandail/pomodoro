@@ -33,10 +33,13 @@ let currentMinutes = 25
 let currentSeconds = 0
 let intervalId = null
 let isRunning = false
-let sessionCounter = 0
 
 let currentLong = 15
 let currentShort = 5
+
+let typeSession = 'work'
+let sessionCounter = 0
+let timeSession
 
 resetControls()
 
@@ -54,14 +57,51 @@ function startTimer() {
   $btnSettings.disabled = true
 
   currentMinutes = Number($inputWork.value)
-
-  console.log(typeof currentMinutes)
+  currentShort = Number($inputShort.value)
+  currentLong = Number($inputLong.value)
 
   if (intervalId) return
 
-  startSession(currentMinutes)
+  startSession()
 }
 
+function startSession() {
+  const duration = getDuration(typeSession)
+
+  currentMinutes = duration
+  currentSeconds = 0
+
+  intervalId = setInterval(() => {
+    if (currentSeconds > 0) {
+      currentSeconds--
+    } else {
+      currentSeconds = 59
+      currentMinutes--
+    }
+
+    renderDisplay(currentMinutes, currentSeconds)
+
+    if (currentMinutes === 0 && currentSeconds === 0) {
+      clearInterval(intervalId)
+      onSessionComplete()
+    }
+  }, 10)
+}
+
+function getDuration(sessionType) {
+  switch (sessionType) {
+    case 'work':
+      return Number($inputWork.value)
+    case 'short':
+      return Number($inputShort.value)
+    case 'long':
+      return Number($inputLong.value)
+  }
+}
+
+function onSessionComplete() {}
+
+/*
 function startSession(type, time) {
   intervalId = setInterval(() => {
     if (currentSeconds > 0) {
@@ -76,8 +116,9 @@ function startSession(type, time) {
     if (currentMinutes === 0 && currentSeconds === 0) {
       clearInterval(intervalId)
     }
-  }, 1000)
+  }, 10)
 }
+*/
 
 function pauseTimer() {
   $btnStart.disabled = false
@@ -126,7 +167,6 @@ function saveSettings() {
 
   const minutes = Number($inputWork.value)
 
-  console.log(minutes)
   renderDisplay(minutes, 0)
 }
 
