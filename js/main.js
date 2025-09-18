@@ -30,6 +30,8 @@ $btnReset.addEventListener('click', resetTimer)
 $btnSettingSave.addEventListener('click', saveSettings)
 $btnSettingresetDefault.addEventListener('click', resetDefault)
 
+const $dots = document.querySelectorAll('.dot')
+
 let currentMinutes = 25
 let currentSeconds = 0
 let intervalId = null
@@ -39,7 +41,7 @@ let currentLong = 15
 let currentShort = 5
 
 let typeSession = 'work'
-let sessionCounter = 0
+let sessionCounter = 1
 
 resetControls()
 
@@ -68,7 +70,7 @@ function startTimer() {
 
 function startSession() {
   const duration = getDuration(typeSession)
-
+  console.log({ sessionCounter, typeSession })
   currentMinutes = duration
   currentSeconds = 0
 
@@ -84,7 +86,8 @@ function startSession() {
 
     if (currentMinutes === 0 && currentSeconds === 0) {
       clearInterval(intervalId)
-      if (typeSession !== 'long') onSessionComplete()
+      //if (typeSession !== 'long') onSessionComplete()
+      onSessionComplete()
     }
   }, 100)
 }
@@ -107,13 +110,34 @@ function onSessionComplete() {
     startSession()
   } else if (typeSession === 'work' && sessionCounter === 4) {
     typeSession = 'long'
+    sessionCounter = 1
     startSession()
   } else if (typeSession === 'short') {
+    typeSession = 'work'
+    refreshDotsCounter()
+    startSession()
+  } else if (typeSession === 'long') {
     typeSession = 'work'
     startSession()
   }
 
   $typeSession.textContent = typeSession
+}
+
+function refreshDotsCounter() {
+  if (sessionCounter === 1) {
+    $dots[3].classList.remove('active')
+    $dots[0].classList.add('active')
+  } else if (sessionCounter === 2) {
+    $dots[0].classList.remove('active')
+    $dots[1].classList.add('active')
+  } else if (sessionCounter === 3) {
+    $dots[1].classList.remove('active')
+    $dots[2].classList.add('active')
+  } else if (sessionCounter === 4) {
+    $dots[2].classList.remove('active')
+    $dots[3].classList.add('active')
+  }
 }
 
 /*
