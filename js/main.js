@@ -20,6 +20,7 @@ const $btnSettingresetDefault = document.getElementById('resetDefault')
 
 const $error = document.getElementById('error')
 const $errorMsg = document.getElementById('error_msg')
+const $typeSession = document.getElementById('type-session')
 
 $btnSettings.addEventListener('click', showSetting)
 $btnSettingClose.addEventListener('click', showSetting)
@@ -39,7 +40,6 @@ let currentShort = 5
 
 let typeSession = 'work'
 let sessionCounter = 0
-let timeSession
 
 resetControls()
 
@@ -52,6 +52,7 @@ function showSetting() {
 }
 
 function startTimer() {
+  $typeSession.textContent = 'Work'
   $btnStart.disabled = true
   $btnPause.disabled = false
   $btnSettings.disabled = true
@@ -83,9 +84,9 @@ function startSession() {
 
     if (currentMinutes === 0 && currentSeconds === 0) {
       clearInterval(intervalId)
-      onSessionComplete()
+      if (typeSession !== 'long') onSessionComplete()
     }
-  }, 10)
+  }, 100)
 }
 
 function getDuration(sessionType) {
@@ -99,7 +100,21 @@ function getDuration(sessionType) {
   }
 }
 
-function onSessionComplete() {}
+function onSessionComplete() {
+  if (typeSession === 'work' && sessionCounter < 4) {
+    sessionCounter++
+    typeSession = 'short'
+    startSession()
+  } else if (typeSession === 'work' && sessionCounter === 4) {
+    typeSession = 'long'
+    startSession()
+  } else if (typeSession === 'short') {
+    typeSession = 'work'
+    startSession()
+  }
+
+  $typeSession.textContent = typeSession
+}
 
 /*
 function startSession(type, time) {
