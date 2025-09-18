@@ -70,7 +70,7 @@ function startTimer() {
 
 function startSession() {
   const duration = getDuration(typeSession)
-  console.log({ sessionCounter, typeSession })
+
   currentMinutes = duration
   currentSeconds = 0
 
@@ -118,6 +118,7 @@ function onSessionComplete() {
     startSession()
   } else if (typeSession === 'long') {
     typeSession = 'work'
+    refreshDotsCounter()
     startSession()
   }
 
