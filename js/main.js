@@ -40,8 +40,12 @@ let isRunning = false
 let currentLong = 15
 let currentShort = 5
 
+let counterHours = 0
+let counterSeconds = 0
+
 let typeSession = 'work'
 let sessionCounter = 1
+let totalSessionComplete = 0
 
 resetControls()
 
@@ -89,7 +93,7 @@ function startSession() {
       //if (typeSession !== 'long') onSessionComplete()
       onSessionComplete()
     }
-  }, 100)
+  }, 10)
 }
 
 function getDuration(sessionType) {
@@ -107,10 +111,18 @@ function onSessionComplete() {
   if (typeSession === 'work' && sessionCounter < 4) {
     sessionCounter++
     typeSession = 'short'
+
+    const workDuration = Number($inputWork.value)
+    addToTotalTime(workDuration)
+
     startSession()
   } else if (typeSession === 'work' && sessionCounter === 4) {
     typeSession = 'long'
+
+    const workDuration = Number($inputWork.value)
+    addToTotalTime(workDuration)
     sessionCounter = 1
+
     startSession()
   } else if (typeSession === 'short') {
     typeSession = 'work'
@@ -120,6 +132,8 @@ function onSessionComplete() {
     typeSession = 'work'
     refreshDotsCounter()
     startSession()
+    totalSessionComplete++
+    renderCounter()
   }
 
   $typeSession.textContent = typeSession
@@ -171,11 +185,13 @@ function pauseTimer() {
 function resetTimer() {
   clearInterval(intervalId)
   resetControls()
+  resetTotal()
 
   if ($inputWork) {
     currentMinutes = Number($inputWork.value)
 
     currentSeconds = 0
+    totalSessionComplete = 0
     renderDisplay(currentMinutes, currentSeconds)
   }
 }
@@ -191,6 +207,28 @@ function renderDisplay(minutes, seconds) {
   $display.textContent = `${String(minutes).padStart(2, '0')}:${String(
     seconds
   ).padStart(2, '0')}`
+}
+
+function renderCounter() {
+  $completed.textContent = totalSessionComplete
+}
+
+function addToTotalTime(minutes) {
+  counterSeconds += minutes
+
+  while (counterSeconds >= 60) {
+    counterHours++
+    counterSeconds -= 60
+  }
+
+  renderTotalTime()
+}
+
+function renderTotalTime() {
+  $totalTime.textContent =
+    counterHours < 1
+      ? `0h ${counterSeconds}m`
+      : `${counterHours}h ${counterSeconds}m`
 }
 
 function saveSettings() {
@@ -250,4 +288,12 @@ function resetDefault() {
     currentSeconds = 0
     renderDisplay(currentMinutes, currentSeconds)
   }
+}
+
+function resetTotal() {
+  $totalTime.textContent = '0h 0m'
+  $completed.textContent = 0
+
+  counterSeconds = 0
+  counterHours = 0
 }
