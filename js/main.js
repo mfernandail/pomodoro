@@ -22,6 +22,15 @@ const $error = document.getElementById('error')
 const $errorMsg = document.getElementById('error_msg')
 const $typeSession = document.getElementById('type-session')
 
+const $audioStartBreak = document.getElementById('audio-startBreak')
+const $audioStartSession = document.getElementById('audio-startSession')
+
+const btn = document.getElementById('click')
+
+btn.addEventListener('click', () => {
+  $audioStartBreak.play()
+})
+
 $btnSettings.addEventListener('click', showSetting)
 $btnSettingClose.addEventListener('click', showSetting)
 $btnStart.addEventListener('click', startTimer)
@@ -63,6 +72,9 @@ function startTimer() {
   $btnPause.disabled = false
   $btnSettings.disabled = true
 
+  $audioStartSession.play()
+  console.log('work')
+
   currentMinutes = Number($inputWork.value)
   currentShort = Number($inputShort.value)
   currentLong = Number($inputLong.value)
@@ -93,7 +105,7 @@ function startSession() {
       //if (typeSession !== 'long') onSessionComplete()
       onSessionComplete()
     }
-  }, 10)
+  }, 100)
 }
 
 function getDuration(sessionType) {
@@ -115,24 +127,33 @@ function onSessionComplete() {
     const workDuration = Number($inputWork.value)
     addToTotalTime(workDuration)
 
+    $audioStartBreak.play()
+
     startSession()
   } else if (typeSession === 'work' && sessionCounter === 4) {
     typeSession = 'long'
-
     const workDuration = Number($inputWork.value)
     addToTotalTime(workDuration)
     sessionCounter = 1
+
+    console.log('audioStartBreak')
+    $audioStartBreak.play()
 
     startSession()
   } else if (typeSession === 'short') {
     typeSession = 'work'
     refreshDotsCounter()
+
+    console.log('audioStartSession')
+    $audioStartSession.play()
+
     startSession()
   } else if (typeSession === 'long') {
     typeSession = 'work'
     refreshDotsCounter()
     startSession()
     totalSessionComplete++
+
     renderCounter()
   }
 
