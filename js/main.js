@@ -107,7 +107,7 @@ function startSession() {
       //if (typeSession !== 'long') onSessionComplete()
       onSessionComplete()
     }
-  }, 100)
+  }, 1000)
 }
 
 function getDuration(sessionType) {
