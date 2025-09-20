@@ -237,3 +237,11 @@ input:focus {
     margin: 5px 0;
   }
 }
+
+.icon_sound {
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 8px;
+  margin: 0 5px;
+  width: 40px;
+}
