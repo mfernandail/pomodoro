@@ -245,3 +245,11 @@ input:focus {
   margin: 0 5px;
   width: 40px;
 }
+
+.type-session {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: tomato;
+  font-weight: bold;
+}
