@@ -25,11 +25,9 @@ const $typeSession = document.getElementById('type-session')
 const $audioStartBreak = document.getElementById('audio-startBreak')
 const $audioStartSession = document.getElementById('audio-startSession')
 
-const btn = document.getElementById('click')
+const $dots = document.querySelectorAll('.dot')
 
-btn.addEventListener('click', () => {
-  $audioStartBreak.play()
-})
+const $soundBtn = document.getElementById('icon_sound')
 
 $btnSettings.addEventListener('click', showSetting)
 $btnSettingClose.addEventListener('click', showSetting)
@@ -38,8 +36,10 @@ $btnPause.addEventListener('click', pauseTimer)
 $btnReset.addEventListener('click', resetTimer)
 $btnSettingSave.addEventListener('click', saveSettings)
 $btnSettingresetDefault.addEventListener('click', resetDefault)
+$soundBtn.addEventListener('click', soundFn)
 
-const $dots = document.querySelectorAll('.dot')
+$audioStartBreak.addEventListener('error', errorSound)
+$audioStartSession.addEventListener('error', errorSound)
 
 let currentMinutes = 25
 let currentSeconds = 0
@@ -55,6 +55,8 @@ let counterSeconds = 0
 let typeSession = 'work'
 let sessionCounter = 1
 let totalSessionComplete = 0
+
+let sound = true
 
 resetControls()
 
@@ -72,8 +74,7 @@ function startTimer() {
   $btnPause.disabled = false
   $btnSettings.disabled = true
 
-  $audioStartSession.play()
-  console.log('work')
+  if (sound) $audioStartSession.play()
 
   currentMinutes = Number($inputWork.value)
   currentShort = Number($inputShort.value)
@@ -127,7 +128,7 @@ function onSessionComplete() {
     const workDuration = Number($inputWork.value)
     addToTotalTime(workDuration)
 
-    $audioStartBreak.play()
+    if (sound) $audioStartBreak.play()
 
     startSession()
   } else if (typeSession === 'work' && sessionCounter === 4) {
@@ -136,16 +137,14 @@ function onSessionComplete() {
     addToTotalTime(workDuration)
     sessionCounter = 1
 
-    console.log('audioStartBreak')
-    $audioStartBreak.play()
+    if (sound) $audioStartBreak.play()
 
     startSession()
   } else if (typeSession === 'short') {
     typeSession = 'work'
     refreshDotsCounter()
 
-    console.log('audioStartSession')
-    $audioStartSession.play()
+    if (sound) $audioStartSession.play()
 
     startSession()
   } else if (typeSession === 'long') {
@@ -317,4 +316,41 @@ function resetTotal() {
 
   counterSeconds = 0
   counterHours = 0
+}
+
+function soundFn() {
+  sound = !sound
+
+  if (sound) {
+    $soundBtn.src = './assets/icons/soundOff.png'
+  } else {
+    $soundBtn.src = './assets/icons/soundOn.png'
+  }
+}
+
+async function playSounds(audioElement) {
+  if (!audioElement) return
+
+  try {
+    await audioElement.play()
+  } catch (error) {
+    if (error.name === 'NotAllowedError') {
+      $errorMsg.textContent(
+        'Audio blocked by browser - user interaction required'
+      )
+    } else {
+      $errorMsg.textContent('Audio error:', error)
+    }
+    setTimeout(() => {
+      $error.classList.remove('show')
+    }, 3000)
+  }
+}
+
+function errorSound() {
+  $errorMsg.textContent = 'Audio file failed to load'
+  $error.classList.add('show')
+  setTimeout(() => {
+    $error.classList.remove('show')
+  }, 3000)
 }
