@@ -74,7 +74,8 @@ function startTimer() {
   $btnPause.disabled = false
   $btnSettings.disabled = true
 
-  if (sound) $audioStartSession.play()
+  if (sound) playSounds($audioStartSession)
+  //if (sound) $audioStartSession.play()
 
   currentMinutes = Number($inputWork.value)
   currentShort = Number($inputShort.value)
@@ -128,7 +129,8 @@ function onSessionComplete() {
     const workDuration = Number($inputWork.value)
     addToTotalTime(workDuration)
 
-    if (sound) $audioStartBreak.play()
+    //if (sound) $audioStartBreak.play()
+    if (sound) playSounds($audioStartBreak)
 
     startSession()
   } else if (typeSession === 'work' && sessionCounter === 4) {
@@ -137,14 +139,16 @@ function onSessionComplete() {
     addToTotalTime(workDuration)
     sessionCounter = 1
 
-    if (sound) $audioStartBreak.play()
+    //if (sound) $audioStartBreak.play()
+    if (sound) playSounds($audioStartBreak)
 
     startSession()
   } else if (typeSession === 'short') {
     typeSession = 'work'
     refreshDotsCounter()
 
-    if (sound) $audioStartSession.play()
+    //if (sound) $audioStartSession.play()
+    if (sound) playSounds($audioStartSession)
 
     startSession()
   } else if (typeSession === 'long') {
@@ -152,6 +156,8 @@ function onSessionComplete() {
     refreshDotsCounter()
     startSession()
     totalSessionComplete++
+
+    if (sound) playSounds($audioStartSession)
 
     renderCounter()
   }
@@ -322,9 +328,9 @@ function soundFn() {
   sound = !sound
 
   if (sound) {
-    $soundBtn.src = './assets/icons/soundOff.png'
-  } else {
     $soundBtn.src = './assets/icons/soundOn.png'
+  } else {
+    $soundBtn.src = './assets/icons/soundOff.png'
   }
 }
 
@@ -335,9 +341,8 @@ async function playSounds(audioElement) {
     await audioElement.play()
   } catch (error) {
     if (error.name === 'NotAllowedError') {
-      $errorMsg.textContent(
+      $errorMsg.textContent =
         'Audio blocked by browser - user interaction required'
-      )
     } else {
       $errorMsg.textContent('Audio error:', error)
     }
